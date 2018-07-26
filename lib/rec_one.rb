@@ -27,10 +27,9 @@ class RecreationOne
   def factors(number)
     factors = []
     (1..number**0.5).each do |possible_factor|
-      if number % possible_factor == 0
-        factors << possible_factor
-        factors << number/possible_factor unless number/possible_factor == possible_factor
-      end
+      next if (number % possible_factor) != 0
+      factors << possible_factor
+      factors << number/possible_factor unless number == possible_factor**2
     end
     factors
   end
