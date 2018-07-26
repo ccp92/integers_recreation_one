@@ -67,7 +67,7 @@ describe RecreationOne do
 
   private
 
-  def test(m, n, output)
-    expect(recreation.list_squared(m, n)).to eq(output)
+  def test(first_number, last_number, output)
+    expect(recreation.list_squared(first_number, last_number)).to eq(output)
   end
 end
