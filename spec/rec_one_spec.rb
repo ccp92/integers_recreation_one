@@ -15,7 +15,7 @@ describe RecreationOne do
     end
 
     it 'can pass 2 and return nill' do
-      test(2, 2, nil)
+      test(2, 2, [])
     end
 
     it 'can pass 42 and return [42, 2500]' do

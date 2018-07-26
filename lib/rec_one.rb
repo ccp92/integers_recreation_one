@@ -6,7 +6,7 @@ class RecreationOne
     results = []
     (m..n).each { |number| build_results(results, number) }
     return results unless results.empty?
-    nil
+    []
   end
 
   private
