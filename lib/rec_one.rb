@@ -2,6 +2,7 @@
 
 class RecreationOne
   def list_squared(m, n)
+    validation(m, n)
     results = []
     (m..n).each { |number| build_results(results, number) }
     return results unless results.empty?
@@ -9,6 +10,12 @@ class RecreationOne
   end
 
   private
+
+  def validation(m, n)
+    raise ArgumentError if m > n
+    raise ArgumentError if 1 > m
+    raise ArgumentError unless (m.is_a? Integer) && (n.is_a? Integer)
+  end
 
   def build_results(results, number)
     factors_squared = array_of_factors(number).map! { |factor| factor**2 }

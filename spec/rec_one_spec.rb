@@ -24,7 +24,7 @@ describe RecreationOne do
   end
 
   context 'given two different arguments' do
-    context 'the arguments are valid (1 <= m <= n)' do
+    context 'whilst the arguments are valid (1 <= m <= n)' do
       it 'can pass 1 and 41 and return [1, 1]' do
         test(1, 41, [result1])
       end
@@ -39,6 +39,28 @@ describe RecreationOne do
 
       it 'can pass 1 and 250 and return [[1, 1], [42, 2500], [246, 84100]]' do
         test(1, 250, [result1, result42, result246])
+      end
+    end
+
+    context 'whilst the arguments are invalid' do
+      it 'raises an error when m > n' do
+        expect { recreation.list_squared(2, 1) }.to raise_error(ArgumentError)
+      end
+
+      it 'raises an error when 1 > m' do
+        expect { recreation.list_squared(0, 3) }.to raise_error(ArgumentError)
+      end
+
+      it 'raises an error when m is not an Integer' do
+        expect { recreation.list_squared(2.5, 3) }.to raise_error(ArgumentError)
+      end
+
+      it 'raises an error when 1 > n' do
+        expect { recreation.list_squared(0, 0) }.to raise_error(ArgumentError)
+      end
+
+      it 'raises an error when n is not an Integer' do
+        expect { recreation.list_squared(1, 3.25) }.to raise_error(ArgumentError)
       end
     end
   end
