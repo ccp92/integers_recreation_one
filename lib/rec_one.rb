@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'prime'
+
 class RecreationOne
   def list_squared(first_number, last_number)
     validation(first_number, last_number)
@@ -18,13 +20,19 @@ class RecreationOne
   end
 
   def build_results(results, number)
-    factors_squared = factors(number).map! { |factor| factor**2 }
-    sum_of_squares = factors_squared.reduce(:+)
-    results.push([number, sum_of_squares]) if integer?(Math.sqrt(sum_of_squares))
+    sum_of_squares = factors(number).map! { |factor| factor**2 }.inject(:+)
+    results.push([number, sum_of_squares]) if integer?(sum_of_squares**0.5)
   end
 
-  def factors(first_number)
-    (1..first_number).select { |integer| (first_number % integer).zero? }
+  def factors(number)
+    factors = []
+    (1..number**0.5).each do |possible_factor|
+      if number % possible_factor == 0
+        factors << possible_factor
+        factors << number/possible_factor unless number/possible_factor == possible_factor
+      end
+    end
+    factors
   end
 
   def integer?(num)
