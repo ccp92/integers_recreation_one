@@ -8,6 +8,15 @@ describe RecreationOne do
   result1 = [1, 1]
   result42 = [42, 2500]
   result246 = [246, 84_100]
+  result287 = [287, 84100]
+  result728 = [728, 722500]
+  result1434 = [1434, 2856100]
+  result1673 = [1673, 2856100]
+  result1880 = [1880, 4884100]
+  result4264 = [4264, 24304900]
+  result6237 = [6237, 45024100]
+  result9799 = [9799, 96079204]
+  result9855 = [9855, 113635600]
 
   context 'given two arguments that are the same' do
     it 'can pass 1 and return [1, 1]' do
@@ -39,6 +48,10 @@ describe RecreationOne do
 
       it 'can pass 1 and 250 and return [[1, 1], [42, 2500], [246, 84100]]' do
         test(1, 250, [result1, result42, result246])
+      end
+
+      it 'can pass 1 and 10,000 and return a valid array' do
+        test(1, 10_000, [result1, result42, result246, result287, result728, result1434, result1673, result1880, result4264, result6237, result9799, result9855])
       end
     end
 
