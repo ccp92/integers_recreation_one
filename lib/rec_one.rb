@@ -2,9 +2,13 @@
 
 class RecreationOne
   def list_squared(m, n)
-    factors_squared = array_of_factors(m).map! {|factor| factor ** 2}
-    sum_of_squares = factors_squared.reduce(:+)
-    return [m, sum_of_squares] if integer?(Math.sqrt(sum_of_squares))
+    results = []
+    (m..n).each do |number|
+      factors_squared = array_of_factors(number).map! {|factor| factor ** 2}
+      sum_of_squares = factors_squared.reduce(:+)
+      results.push([number, sum_of_squares]) if integer?(Math.sqrt(sum_of_squares))
+    end
+    return results unless results.empty?
     nil
   end
 
